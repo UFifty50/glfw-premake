@@ -37,6 +37,7 @@ project "GLFW"
 			"src/x11_monitor.c",
 			"src/x11_window.c",
 			"src/xkb_unicode.c",
+			"src/posix_module.c",
 			"src/posix_time.c",
 			"src/posix_thread.c",
 			"src/glx_context.c",
@@ -69,13 +70,7 @@ project "GLFW"
 
 		defines 
 		{ 
-			"_GLFW_WIN32",
-			"_CRT_SECURE_NO_WARNINGS"
-		}
-
-		links
-		{
-			"Dwmapi.lib"
+			"_GLFW_WIN32"
 		}
 
 	filter "configurations:Debug"
@@ -84,9 +79,9 @@ project "GLFW"
 
 	filter "configurations:Release"
 		runtime "Release"
-		optimize "on"
+		optimize "speed"
 
 	filter "configurations:Dist"
 		runtime "Release"
-		optimize "on"
-        symbols "off"
+		optimize "speed"
+        	symbols "off"
