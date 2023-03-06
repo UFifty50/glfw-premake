@@ -536,11 +536,9 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
     _GLFWwindow* window = GetPropW(hWnd, L"GLFW");
     if (!window)
     {
-        if (uMsg == WM_NCCREATE)
-        {
-            if (_glfwIsWindows10Version1607OrGreaterWin32())
-            {
-                const CREATESTRUCTW* cs = (const CREATESTRUCTW*) lParam;
+        if (uMsg == WM_NCCREATE) {
+            if (_glfwIsWindows10Version1607OrGreaterWin32()) {
+                const CREATESTRUCTW* cs = (const CREATESTRUCTW*)lParam;
                 const _GLFWwndconfig* wndconfig = cs->lpCreateParams;
 
                 // On per-monitor DPI aware V1 systems, only enable
@@ -550,13 +548,16 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
                 if (wndconfig && wndconfig->scaleToMonitor)
                     EnableNonClientDpiScaling(hWnd);
             }
+        }
 
+        switch (uMsg)
+        {
             case WM_CREATE:
             {
                 if (_glfw.hints.window.titlebar)
                     break;
 
-                f (hasThickFrame)
+                if (hasThickFrame)
 				{
 					RECT size_rect;
 					GetWindowRect(hWnd, &size_rect);

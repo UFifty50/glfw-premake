@@ -3,8 +3,8 @@ project "GLFW"
 	language "C"
 	staticruntime "off"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin/intermediate/" .. outputdir .. "/%{prj.name}")
+	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
+	objdir ("bin/intermediate/" .. outputDir .. "/%{prj.name}")
 
 	files
 	{
@@ -40,6 +40,7 @@ project "GLFW"
 			"src/posix_module.c",
 			"src/posix_time.c",
 			"src/posix_thread.c",
+            "src/posix_poll.c",
 			"src/glx_context.c",
 			"src/egl_context.c",
 			"src/osmesa_context.c",
