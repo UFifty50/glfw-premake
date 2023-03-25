@@ -71,8 +71,13 @@ project "GLFW"
 
 		defines 
 		{ 
-			"_GLFW_WIN32"
+			"_GLFW_WIN32",
+            "_CRT_SECURE_NO_WARNINGS"
 		}
+
+    filter { "system:windows", "configurations:Release" }
+        buildoptions "/MT"
+
 
 	filter "configurations:Debug"
 		runtime "Debug"
@@ -85,4 +90,4 @@ project "GLFW"
 	filter "configurations:Dist"
 		runtime "Release"
 		optimize "speed"
-        	symbols "off"
+        symbols "off"
