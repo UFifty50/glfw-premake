@@ -425,7 +425,7 @@ static void createKeyTables(void)
         // lookups
         if (_glfw.x11.keycodes[scancode] < 0)
         {
-            const size_t base = (scancode - scancodeMin) * width;
+            const size_t base = (size_t)(scancode - scancodeMin) * width;
             _glfw.x11.keycodes[scancode] = translateKeySyms(&keysyms[base], width);
         }
 
