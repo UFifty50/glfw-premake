@@ -1054,7 +1054,7 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 			requested_client_rect->right -= frame_x + padding;
 			requested_client_rect->left += frame_x + padding;
 			requested_client_rect->bottom -= frame_y + padding;
-			requested_client_rect->top += frame_y + (window->win32.maximized ? 1.0f : -1.0f) * padding;
+			requested_client_rect->top += frame_y + (window->win32.maximized ? 1 : -1) * padding;
 
 			return 0;
 		}
@@ -2242,7 +2242,7 @@ void _glfwPollEventsWin32(void)
         if (window->win32.lastCursorPosX != width / 2 ||
             window->win32.lastCursorPosY != height / 2)
         {
-            _glfwSetCursorPosWin32(window, width / 2, height / 2);
+            _glfwSetCursorPosWin32(window, (double)width / 2, (double)height / 2);
         }
     }
 }
